@@ -8,6 +8,9 @@ import org.example.hexagonal.ecommerce.domain.Product;
 import org.example.hexagonal.ecommerce.domain.ProductDetail;
 import org.example.hexagonal.ecommerce.domain.Size;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
 
 @Service
 public class ProductDetailService {
@@ -24,6 +27,7 @@ public class ProductDetailService {
         this.offerRepository   = offerRepository;
     }
 
+    @Transactional(readOnly = true)
     public ProductDetail getProductDetail(Integer id) {
 
         Product product = this.productRepository.findById(id);

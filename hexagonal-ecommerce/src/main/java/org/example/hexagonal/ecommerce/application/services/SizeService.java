@@ -4,6 +4,7 @@ import org.example.hexagonal.ecommerce.application.repositories.SizeRepository;
 import org.example.hexagonal.ecommerce.domain.Size;
 import org.example.hexagonal.ecommerce.infrastructure.events.ProductAvailabilityEvent;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class SizeService {
@@ -13,7 +14,8 @@ public class SizeService {
 	public SizeService(SizeRepository sizeRepository) {
 		this.sizeRepository = sizeRepository;
 	}
-
+	
+	@Transactional
 	public Size updateSizeByProductAvailabilityEvent(ProductAvailabilityEvent productAvailabilityEvent) {
 		
 		if( productAvailabilityEvent == null  || productAvailabilityEvent.getSizeId() == null )
