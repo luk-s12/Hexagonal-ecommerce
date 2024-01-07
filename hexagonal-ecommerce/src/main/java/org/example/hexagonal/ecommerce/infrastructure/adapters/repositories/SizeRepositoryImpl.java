@@ -95,6 +95,7 @@ public class SizeRepositoryImpl implements SizeRepository {
 				   .id(sizeEntity.getId())
 				   .availability(sizeEntity.getAvailability())
 				   .lastUpdate(sizeEntity.getLastUpdate())
+				   .size(sizeEntity.getSize())
 				   .product( product )
 				   .build();
 	}
@@ -110,6 +111,7 @@ public class SizeRepositoryImpl implements SizeRepository {
 						 .availability(size.getAvailability())
 						 .lastUpdate(size.getLastUpdate())
 						 .product( productEntity )
+						 .size(size.getSize())
 						 .build();
 	}
 }
