@@ -1,7 +1,5 @@
 package org.example.hexagonal.ecommerce.infrastructure.rest;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.example.hexagonal.ecommerce.application.services.MockServerClientService;
@@ -34,11 +32,7 @@ public class SimilarController {
 		if( ids.isEmpty() )
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No products similar were found");
 			
-		List<ProductDetail> response = new ArrayList<>();
-
-		ids.forEach(id -> {
-			response.add(this.productDetailService.getProductDetail( id ));
-		});
+		List<ProductDetail> response = this.productDetailService.getProductDetailsForIds(ids);
 
 		return ResponseEntity.ok(response);
 	}

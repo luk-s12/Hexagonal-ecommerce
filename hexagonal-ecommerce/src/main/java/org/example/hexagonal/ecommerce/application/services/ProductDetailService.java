@@ -1,5 +1,8 @@
 package org.example.hexagonal.ecommerce.application.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.example.hexagonal.ecommerce.application.repositories.OfferRepository;
 import org.example.hexagonal.ecommerce.application.repositories.ProductRepository;
 import org.example.hexagonal.ecommerce.application.repositories.SizeRepository;
@@ -41,6 +44,12 @@ public class ProductDetailService {
                 .availability(size.getAvailability())
                 .build();
 
+    }
+    
+    public List<ProductDetail> getProductDetailsForIds(List<Integer> ids) {
+        List<ProductDetail> response = new ArrayList<>();
+        ids.forEach(id -> response.add(this.getProductDetail(id)) );
+        return response;
     }
 
 }
